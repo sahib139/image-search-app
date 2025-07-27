@@ -1,6 +1,7 @@
 # Image Search App
 
 A simple React app to search and display images.
+https://find-img-app.netlify.app/
 
 ## How to Use
 
@@ -8,8 +9,10 @@ A simple React app to search and display images.
    ```bash
    npm install
    ```
+2. **Replace your UNSPLASH API KEY**
+- go to file `./src/API/src/API/` and replace `YOUR_UNSPLASH_ACCESS_KEY` with your unsplash API key. 
 
-2. **Start the App**
+3. **Start the App**
    ```bash
    npm run dev
    ```

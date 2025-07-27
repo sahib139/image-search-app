@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import SearchBar from './components/searchbar'
+import SearchBar from './components/searchBar'
 import ImageBox from './components/imageList'
 import searchApi from "./API/searchApi";
 
@@ -8,11 +8,19 @@ import searchApi from "./API/searchApi";
 function App() {
   const [imagesData, updateImageData] = useState([])
   const [searchParams, setSearchParams] = useState({});
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       if (!searchParams.search_value || !searchParams.page_number) return;
-      const data = await searchApi(searchParams.search_value, 10, searchParams.page_number);
-      updateImageData(data.results);
+      try {
+        const data = await searchApi(searchParams.search_value, 10, searchParams.page_number);
+        setError(null);
+        updateImageData(data);
+      } catch (error) {
+        setSearchParams({})
+        setError("Unable to Fetch the Images!");
+      }
     };
     fetchData();
   }, [searchParams]);
@@ -40,6 +48,7 @@ function App() {
       <div className='main-content'>
         < SearchBar setSearchParams={setSearchParams} />
         < ImageBox images={imagesData} />
+          {error && <h3>{error}</h3>}
       </div>
       <footer className="app-footer">
         {searchParams?.page_number && <div className="pagination">

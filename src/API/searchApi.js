@@ -13,10 +13,10 @@ const searchApi = async (query, item_per_page, page_number) => {
      'Content-Type': 'application/json',
    },
   });
-  return response.data;
+  return response.data?.results;
  } catch (error) {
   console.error('Error fetching search results:', error);
-  return {}
+  throw error
  }
 }
 
