@@ -10,7 +10,7 @@ https://find-img-app.netlify.app/
    npm install
    ```
 2. **Replace your UNSPLASH API KEY**
-- go to file `./src/API/src/API/` and replace `YOUR_UNSPLASH_ACCESS_KEY` with your unsplash API key. 
+- go to file `./src/API/searchApi.js` and replace `YOUR_UNSPLASH_ACCESS_KEY` with your unsplash API key. 
 
 3. **Start the App**
    ```bash
